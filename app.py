@@ -1,3 +1,4 @@
+import time
 import os
 import streamlit as st
 from dotenv import load_dotenv
@@ -30,12 +31,31 @@ if "pdf_text" not in st.session_state:
     st.session_state.pdf_text = ""
 
 def ask_gemini(prompt: str) -> str:
-    """Send a prompt to Gemini and return its text response."""
-    try:
-        result = client.models.generate_content(model=MODEL, contents=prompt)
-        return result.text or "The AI did not return any text. Please try again."
-    except Exception as exc:
-        return f"Gemini error: {exc}"
+
+    for attempt in range(3):
+        try:
+            response = client.models.generate_content(
+                model=MODEL,
+                contents=prompt
+            )
+
+            return response.text or "No response generated."
+
+        except Exception as error:
+
+            error_message = str(error)
+
+            if "503" in error_message or "UNAVAILABLE" in error_message:
+
+                if attempt < 2:
+                    time.sleep(3 * (attempt + 1))
+                    continue
+
+                return "Gemini is temporarily busy. Please wait a few minutes and try again."
+
+            return f"Gemini error: {error_message}"
+
+    return "Please try again later."
 
 tabs = st.tabs([
     "🏠 Home",
