@@ -1,61 +1,87 @@
-# 📚 AI Study Assistant
+# ✦ AI Study Assistant — Module 06 Final Project
 
-Your personal AI-powered learning companion built using Python, Google Gemini AI and Streamlit.
+A polished AI-powered study companion built with **Python, Streamlit, Google Gemini API and PyPDF**. It helps students understand topics, summarize lecture PDFs, ask questions from their notes, and practice interactive MCQ quizzes.
 
-## 🚀 Features
+## ✨ Features
 
-1. **AI Topic Explainer** – Explains academic topics in simple English with examples.
-2. **PDF Summarizer** – Extracts and summarizes uploaded study PDFs.
-3. **Ask AI** – Answers questions using uploaded study notes.
-4. **MCQ Quiz Generator** – Generates five multiple-choice questions with answers and explanations.
+- **AI Topic Explainer:** simple explanations with definitions, workflows, examples, advantages and exam-ready conclusions.
+- **PDF Summarizer:** extracts selectable text from PDFs, summarizes long documents in sections, and lets users download summaries.
+- **Ask Your Notes:** chat-style question answering grounded in the uploaded PDF. It tells the user when an answer is not present in the notes.
+- **Quiz Studio:** creates 5, 8 or 10 MCQs, supports difficulty levels, interactive answer selection, scoring and explanations.
+- **Premium interface:** dark space-inspired background, violet/cyan gradients, glass-style feature cards and sidebar navigation.
+- **API resilience:** configurable Gemini model, retry handling for temporary service/rate-limit errors, and readable error messages.
 
-## 🛠️ Technologies Used
+## 🧰 Tech Stack
 
-- Python
-- Google Gemini AI
+- Python 3.10+
 - Streamlit
+- Google GenAI SDK (`google-genai`)
 - PyPDF
 - python-dotenv
 
-## ▶️ How to Run
+## 🚀 Run on Windows
 
-1. Download or clone this repository.
-2. Install Python 3.10 or newer.
-3. Copy `.env.example` and rename the copy to `.env`.
-4. Add your Gemini API key inside `.env`.
-5. Open CMD in the project folder.
-6. Run:
+1. Install Python 3.10 or newer.
+2. Extract this ZIP folder.
+3. Open the extracted `AI-Study-Assistant-Module06` folder.
+4. Copy `.env.example` and rename the copy to `.env`.
+5. Open `.env` and add your Gemini API key:
 
-```bash
-python -m pip install -r requirements.txt
-python -m streamlit run app.py
+```env
+GEMINI_API_KEY=your_actual_api_key_here
+GEMINI_MODEL=gemini-2.5-flash
 ```
 
-7. Open `http://localhost:8501` in your browser.
+6. Double-click `run.bat`, or open CMD in the project folder and run:
 
-On Windows, you can also double-click `run.bat` after configuring `.env`.
+```bash
+python -m venv .venv
+.venv\Scripts\activate
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+streamlit run app.py
+```
 
-## 📂 Project Structure
+7. Open the local URL shown in CMD (usually `http://localhost:8501`).
+
+## 🔐 API Key Safety
+
+- Never paste your API key into `app.py`.
+- Never upload `.env` to GitHub.
+- `.env` is excluded by `.gitignore`.
+- If you publish to a hosting provider, configure `GEMINI_API_KEY` as a secret/environment variable.
+
+## 📁 Project Structure
 
 ```text
-AI-Study-Assistant/
+AI-Study-Assistant-Module06/
 ├── app.py
 ├── requirements.txt
 ├── .env.example
 ├── .gitignore
 ├── run.bat
-└── README.md
+├── README.md
+└── .streamlit/
+    └── config.toml
 ```
 
-## 🎯 Learning Outcomes
+## 🧪 Testing Checklist
 
-- Learned to integrate Google Gemini AI with Python.
-- Explored AI tools for learning and productivity.
-- Practiced PDF text extraction.
-- Developed an interactive AI-powered application.
+- [ ] Dashboard opens without errors.
+- [ ] Topic Explainer generates an explanation.
+- [ ] A text-based PDF can be uploaded and summarized.
+- [ ] Ask Your Notes answers from the uploaded PDF.
+- [ ] Quiz Studio generates questions, accepts answers and calculates a score.
+- [ ] App displays a useful message when API quota/service is unavailable.
+- [ ] `.env` is not committed to GitHub.
 
-## Internship
+## ⚠️ Notes and Limitations
 
-Codomax Digital Solutions – Module 05: AI Tools & Mini Project.
+- The app uses the Gemini API and therefore requires a valid API key and available API quota.
+- Gemini service availability and quotas are controlled by Google. Retry logic can handle temporary failures but cannot guarantee service availability.
+- Scanned/image-only PDFs are not OCR processed in this version; use a selectable-text PDF.
+- Ask Your Notes sends a bounded portion of extracted text to the model. Very large documents may require more focused questions.
 
-**Note:** Keep your Gemini API key private. Never upload your `.env` file to GitHub.
+## 🎓 Internship Milestone
+
+Prepared as an upgraded final AI/ML project for **Codomax Digital Solutions — Module 06 (Day 21–Day 24)**.
