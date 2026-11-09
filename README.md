@@ -1,59 +1,41 @@
 # 📚 AI Study Assistant
 
-An AI-powered learning companion for college students, built with **Python, Google Gemini AI, Streamlit, and PyPDF**.
+Your personal AI-powered learning companion built using Python, Google Gemini AI and Streamlit.
 
-## Features
+## 🚀 Features
 
-1. **AI Topic Explainer** – explains a topic in simple English with headings and examples.
-2. **PDF Summarizer** – extracts text from a study PDF and generates a summary.
-3. **Ask AI** – answers questions using the extracted PDF notes.
-4. **MCQ Quiz Generator** – creates five multiple-choice questions with answers and explanations.
+1. **AI Topic Explainer** – Explains academic topics in simple English with examples.
+2. **PDF Summarizer** – Extracts and summarizes uploaded study PDFs.
+3. **Ask AI** – Answers questions using uploaded study notes.
+4. **MCQ Quiz Generator** – Generates five multiple-choice questions with answers and explanations.
 
-## Requirements
+## 🛠️ Technologies Used
 
-- Windows 10/11
-- Python 3.10 or newer
-- Internet connection
-- Gemini API key
+- Python
+- Google Gemini AI
+- Streamlit
+- PyPDF
+- python-dotenv
 
-## Quick start on Windows
+## ▶️ How to Run
 
-1. Extract the ZIP file.
-2. Open the extracted `AI-Study-Assistant` folder.
-3. Make a copy of `.env.example` and rename the copy to `.env`.
-4. Open `.env` in Notepad and replace `PASTE_YOUR_GEMINI_API_KEY_HERE` with your Gemini API key.
-5. Save the file.
-6. Double-click **`run.bat`**.
-
-The first run creates a virtual environment and installs the required packages. This may take a few minutes. When installation finishes, Streamlit opens the application in your browser.
-
-### Run manually (optional)
-
-Open a terminal in this folder and run:
+1. Download or clone this repository.
+2. Install Python 3.10 or newer.
+3. Copy `.env.example` and rename the copy to `.env`.
+4. Add your Gemini API key inside `.env`.
+5. Open CMD in the project folder.
+6. Run:
 
 ```bash
-python -m venv .venv
-.venv\\Scripts\\activate
 python -m pip install -r requirements.txt
-streamlit run app.py
+python -m streamlit run app.py
 ```
 
-## Get a Gemini API key
+7. Open `http://localhost:8501` in your browser.
 
-Create or manage a key using Google AI Studio: https://aistudio.google.com/app/apikey
+On Windows, you can also double-click `run.bat` after configuring `.env`.
 
-Keep your API key private. Do not upload `.env` to GitHub.
-
-## How to use
-
-- Open **Topic Explainer**, enter a topic, and click **Explain Topic**.
-- Open **PDF Summarizer**, upload a text-based PDF, and click **Extract and Summarize PDF**.
-- Open **Ask AI** and ask a question about the uploaded PDF.
-- Open **Quiz Generator**, enter a topic, and click **Generate 5 MCQs**.
-
-**Note:** Scanned PDFs that contain only images may not have extractable text. This project does not include OCR.
-
-## Project structure
+## 📂 Project Structure
 
 ```text
 AI-Study-Assistant/
@@ -65,21 +47,15 @@ AI-Study-Assistant/
 └── README.md
 ```
 
-## Technologies used
+## 🎯 Learning Outcomes
 
-- Python
-- Google Gemini API (`google-genai`)
-- Streamlit
-- PyPDF
-- python-dotenv
+- Learned to integrate Google Gemini AI with Python.
+- Explored AI tools for learning and productivity.
+- Practiced PDF text extraction.
+- Developed an interactive AI-powered application.
 
-## Internship mini-project
+## Internship
 
-Developed as an AI Tools & Mini Project learning activity for **Codomax Digital Solutions**.
+Codomax Digital Solutions – Module 05: AI Tools & Mini Project.
 
-## Troubleshooting
-
-- **API key warning:** Check that `.env` is in the same folder as `app.py`, and that the key is entered after `GEMINI_API_KEY=`.
-- **Model not found:** Change `GEMINI_MODEL` in `.env` to a Gemini model available to your API key.
-- **Package installation is slow:** The first run needs to download Python packages. Keep the terminal open until it finishes.
-- **Port already in use:** Close the earlier Streamlit terminal, then run `run.bat` again.
+**Note:** Keep your Gemini API key private. Never upload your `.env` file to GitHub.
